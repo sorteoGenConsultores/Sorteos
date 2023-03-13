@@ -1,38 +1,38 @@
-require('dotenv').config();
-const { Sequelize } = require('sequelize');
-const fs = require('fs');
-const path = require('path');
+require("dotenv").config();
+const { Sequelize } = require("sequelize");
+const fs = require("fs");
+const path = require("path");
 const { PGUSER, PGPASSWORD, PGHOST, PGDATABASE, PGPORT } = process.env;
 
 const sequelize =
   process.env.NODE_ENV === "production"
     ? new Sequelize({
-      database: PGDATABASE,
-      dialect: "postgres",
-      host: PGHOST,
-      port: PGPORT,
-      username: PGUSER,
-      password: PGPASSWORD,
-      pool: {
-        max: 3,
-        min: 1,
-        idle: 10000,
-      },
-      dialectOptions: {
-        ssl: {
-          require: true,
-          rejectUnauthorized: false,
+        database: PGDATABASE,
+        dialect: "postgres",
+        host: PGHOST,
+        port: PGPORT,
+        username: PGUSER,
+        password: PGPASSWORD,
+        pool: {
+          max: 3,
+          min: 1,
+          idle: 10000,
         },
-        keepAlive: true,
-      },
-      ssl: true,
-    })
-    : new Sequelize(`postgres://${PGUSER}:${PGPASSWORD}@${PGHOST}/pokemon`, {
-      logging: false, // set to console.log to see the raw SQL queries
-      native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-    });
+        dialectOptions: {
+          ssl: {
+            require: true,
+            rejectUnauthorized: false,
+          },
+          keepAlive: true,
+        },
+        ssl: true,
+      })
+    : new Sequelize(`postgres://${PGUSER}:${PGPASSWORD}@${PGHOST}/sorteos`, {
+        logging: false, // set to console.log to see the raw SQL queries
+        native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+      });
 
-    /* EJEMPLO, ADAPTAR SEGUN SEA NECESARIO
+/* EJEMPLO, ADAPTAR SEGUN SEA NECESARIO
 
 const basename = path.basename(__filename);
 
