@@ -1,54 +1,50 @@
 import React from 'react';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { useState } from 'react';
 import "./listaDinamica.css"
 
 import dummyData from './listaDummy.json';
-import ParticipanteUnidad from './ParticipanteUnidad';
+// import ParticipanteUnidad from './ParticipanteUnidad';
 
-function ListaDinamica(props) {
-   const { participantes } = dummyData
-   const [selected, setSelected] = useState(0)
-   const [changing, setChanging] = useState(true)
+function ListaDinamica({ listaParticipantes }) {
+   const [currentIndex, setCurrentIndex] = React.useState(0);
+   const [animationActive, setAnimationActive] = React.useState(false);
+   const [intervalId, setIntervalId] = React.useState(null);
 
-   function change() {
-      const elements = document.querySelectorAll("div.box");
-      for (const element of elements) {
-         element.classList.toggle("transformed-state");
-      }
+   const { participantes } = { participantes: listaParticipantes } || dummyData;
+   const partipantesLen = participantes.length;
+
+   function handleStopAnimation() {
+      setAnimationActive(false);
+      clearInterval(intervalId);
+      setIntervalId(null);
    }
 
-   function changeSelected(max = 10) {
-      const actual = selected
-      console.log('me corro')
-      if (actual >= max - 1) {
-         setSelected(0)
-         return
-      }
-      setSelected(actual + 1)
+
+   function handleStartAnimation() {
+      setAnimationActive(true);
+      const id = setInterval(() => {
+         setCurrentIndex(currentIndex => (currentIndex + 1) % partipantesLen);
+      }, 10);
+      setIntervalId(id);
    }
 
-   async function running() {
-      while (changing) {
-         await setTimeout(changeSelected, 10000)
-      }
-   }
-
-   useEffect(() => {
-      running()
-   }, [])
 
 
    return (
-      <div className="listaCompleta">
-         {selected}
-         <div className="box delay-1">0.5 seconds</div>
-
-         <button id="change" onClick={() => { change() }}>Change</button>
-         {participantes.map((participante, index) => {
-            return <ParticipanteUnidad nombre={participante} index={index} key={`Participante_${index}_${participante}`} />
-         })}
-      </div>
+      <>
+         <button onClick={animationActive ? handleStopAnimation : handleStartAnimation}>
+            {animationActive ? 'Detener' : 'Iniciar'} animación
+         </button>
+         <div className="listaCompleta">
+            {participantes.map((nombre, index) => {
+               return <div className={currentIndex === index ? 'active' : ''}>
+                  {nombre}
+               </div>
+            }
+            )}
+         </div>
+      </>
    );
 }
 

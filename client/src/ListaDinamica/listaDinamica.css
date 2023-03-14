@@ -13,6 +13,10 @@
    border-radius: 5px;
    margin: 1px;
    border: 1px dotted black;
+   background-color: white;
+   transition-property: background-color, font-size, transform, color;
+   transition-timing-function: ease-in-out;
+   transition-duration: .01s;
 }
 
 
@@ -27,21 +31,32 @@
    width: 100px;
    height: 100px;
    background-color: white;
-   font-size: 18px;
    transition-property: background-color, font-size, transform, color;
+   font-size: 18px;
    transition-timing-function: ease-in-out;
    transition-duration: .5s;
 }
 
 .transformed-state {
    background-color: red;
-   /* color: yellow; */
-   /* font-size: 12px; */
    transition-property: background-color;
    transition-timing-function: ease-in-out;
-   transition-duration: .5s;
+   transition-duration: .01s;
 }
 
 .delay-1 {
-   transition-delay: 0.5s;
+   transition-delay: 0.01s;
+}
+
+canvas {
+   position: absolute;
+   background: #111;
+   height: 100%;
+   width: 100%;
+   left: 0;
+   top: 0;
+}
+
+.active {
+   background-color: yellow;
 }
