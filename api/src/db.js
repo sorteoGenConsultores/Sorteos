@@ -7,32 +7,31 @@ const { PGUSER, PGPASSWORD, PGHOST, PGDATABASE, PGPORT } = process.env;
 const sequelize =
   process.env.NODE_ENV === "production"
     ? new Sequelize({
-        database: PGDATABASE,
-        dialect: "postgres",
-        host: PGHOST,
-        port: PGPORT,
-        username: PGUSER,
-        password: PGPASSWORD,
-        pool: {
-          max: 3,
-          min: 1,
-          idle: 10000,
+      database: PGDATABASE,
+      dialect: "postgres",
+      host: PGHOST,
+      port: PGPORT,
+      username: PGUSER,
+      password: PGPASSWORD,
+      pool: {
+        max: 3,
+        min: 1,
+        idle: 10000,
+      },
+      dialectOptions: {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false,
         },
-        dialectOptions: {
-          ssl: {
-            require: true,
-            rejectUnauthorized: false,
-          },
-          keepAlive: true,
-        },
-        ssl: true,
-      })
+        keepAlive: true,
+      },
+      ssl: true,
+    })
     : new Sequelize(`postgres://${PGUSER}:${PGPASSWORD}@${PGHOST}/sorteos`, {
-        logging: false, // set to console.log to see the raw SQL queries
-        native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-      });
+      logging: false, // set to console.log to see the raw SQL queries
+      native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+    });
 
-/* EJEMPLO, ADAPTAR SEGUN SEA NECESARIO
 
 const basename = path.basename(__filename);
 
@@ -54,16 +53,15 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Pokemon, Tipo } = sequelize.models;
+const { Clients, Participants } = sequelize.models;
+
+Clients.belongsToMany(Participants, { through: 'ClientParticipants', timestamps: false });
+Participants.belongsToMany(Clients, { through: 'ClientParticipants', timestamps: false });
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
-
-Pokemon.belongsToMany(Tipo, { through: 'PokemonTipo', timestamps: false });
-Tipo.belongsToMany(Pokemon, { through: 'PokemonTipo', timestamps: false });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
 };
-*/
