@@ -1,9 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
+import ListaDinamica from './ListaDinamica';
 
 function App() {
   return (
     <div className="App">
+      <ListaDinamica />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
