@@ -5,7 +5,7 @@ import ListaDinamica from './ListaDinamica';
 function App() {
   return (
     <div className="App">
-      <ListaDinamica listaParticipantes={['Juan', "Pedro", 'Luis']} />
+      <ListaDinamica />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>

@@ -14,49 +14,30 @@
    margin: 1px;
    border: 1px dotted black;
    background-color: white;
-   transition-property: background-color, font-size, transform, color;
-   transition-timing-function: ease-in-out;
-   transition-duration: .01s;
+   transition-property: background-color, color, border;
+   transition-timing-function: linear;
+   transition-duration: .08s;
+   width: max(10em, 10%);
+   height: 2.5em;
 }
 
-
+/* 
 .participante:hover {
    background-color: red;
-}
-
-.box {
-   margin: 20px;
-   padding: 10px;
-   display: inline-block;
-   width: 100px;
-   height: 100px;
-   background-color: white;
-   transition-property: background-color, font-size, transform, color;
-   font-size: 18px;
-   transition-timing-function: ease-in-out;
-   transition-duration: .5s;
-}
+} */
 
 .transformed-state {
    background-color: red;
-   transition-property: background-color;
-   transition-timing-function: ease-in-out;
-   transition-duration: .01s;
+   transition-property: background-color, border;
+   transition-timing-function: linear;
+   transition-duration: .08s;
 }
 
-.delay-1 {
-   transition-delay: 0.01s;
-}
-
-canvas {
-   position: absolute;
-   background: #111;
-   height: 100%;
-   width: 100%;
-   left: 0;
-   top: 0;
-}
 
 .active {
+   border: 1px solid brown;
    background-color: yellow;
+   transition-property: background-color, border;
+   transition-timing-function: linear;
+   transition-duration: .01s;
 }

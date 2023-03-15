@@ -11,7 +11,7 @@ function ListaDinamica({ listaParticipantes }) {
    const [animationActive, setAnimationActive] = React.useState(false);
    const [intervalId, setIntervalId] = React.useState(null);
 
-   const { participantes } = { participantes: listaParticipantes } || dummyData;
+   const { participantes } = listaParticipantes ? { participantes: listaParticipantes } : dummyData;
    const partipantesLen = participantes.length;
 
    function handleStopAnimation() {
@@ -25,7 +25,7 @@ function ListaDinamica({ listaParticipantes }) {
       setAnimationActive(true);
       const id = setInterval(() => {
          setCurrentIndex(currentIndex => (currentIndex + 1) % partipantesLen);
-      }, 10);
+      }, 15);
       setIntervalId(id);
    }
 
@@ -38,7 +38,7 @@ function ListaDinamica({ listaParticipantes }) {
          </button>
          <div className="listaCompleta">
             {participantes.map((nombre, index) => {
-               return <div className={currentIndex === index ? 'active' : ''}>
+               return <div className={`participante ${(currentIndex === index) ? 'active' : ''}`}>
                   {nombre}
                </div>
             }
