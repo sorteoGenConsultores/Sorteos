@@ -8,15 +8,16 @@ import Register from './components/register/Register';
 import {
   Routes,
   Route
-  // Link,
-  // useNavigate,
-  // useLocation,
-  // Navigate,
-  // Outlet,
 } from "react-router-dom";
 import TestComponent from './components/TestComponent';
+import { useAuth } from './context/AuthContext';
+import { useEffect } from 'react';
 
 function App() {
+  const { user, usersimple, logout } = useAuth()
+
+  useEffect(() => { console.log(user) }, [])
+
   return (
     <div className="App">
       <Routes>
