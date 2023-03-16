@@ -1,13 +1,16 @@
 const { DataTypes } = require("sequelize");
-const db = require("../db");
 
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define(
     "participant",
     {
-      email: {
+      ID: {
+        type: DataTypes.INTEGER,
         primaryKey: true,
+        autoIncrement: true
+      },
+      email: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
@@ -19,20 +22,20 @@ module.exports = (sequelize) => {
       },
       name: {
         type: DataTypes.STRING,
-        defaultValue: false,
+        defaultValue: false
       },
       cellphone: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: false
       },
       oportunities: {
         type: DataTypes.FLOAT,
-        allowNull: true,
-      },
+        allowNull: true
+      }
     },
     {
       createdAt: false,
-      updatedAt: false,
+      updatedAt: false
     }
   );
 };
