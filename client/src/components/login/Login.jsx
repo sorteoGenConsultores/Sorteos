@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "./login.css";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+import { useAuth } from "../../context/AuthContext";
 
 const Login = () => {
+  const { user, loginWithGoogle, login } = useAuth()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -20,6 +22,7 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    login(email, password);
   };
 
   return (
@@ -29,7 +32,7 @@ const Login = () => {
           <div>
             <h1>Login</h1>
           </div>
-          <form className="login-form">
+          <form className="login-form" onSubmit={handleSubmit}>
             <div className="login-div">
               <label className="login-label" htmlFor="email">
                 Correo electrónico:{" "}
@@ -79,6 +82,11 @@ const Login = () => {
             </button>
           </form>
         </div>
+        <div onClick={
+          () => {
+            loginWithGoogle()
+          }
+        } className="btnLoggin">Soy el loggin</div>
       </div>
     </div>
   );

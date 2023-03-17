@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import "./register.css";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+import RegisterWSocial from "./RegisterWSocial";
+import { useAuth } from "../../context/AuthContext";
 
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const { signup } = useAuth()
 
   const togglePassword = () => {
     setPassword(!password);
@@ -25,6 +29,7 @@ function Register() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    signup(email, password)
   };
 
   return (
@@ -94,6 +99,7 @@ function Register() {
           Registrarse
         </button>
       </form>
+      <RegisterWSocial />
     </div>
   );
 }

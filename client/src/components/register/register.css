@@ -12,56 +12,100 @@
   border-radius: 15px;
   align-items: center;
   justify-content: center;
+  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   background: rgba(255, 255, 255, 0.1);
   box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-right: 1px solid rgba(255, 255, 255, 0.2);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
 }
 
 .register-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 
-  }
-  
-  .register-form .register-div {
-    margin-bottom: 10px;
-  }
-  
-  .register-form .register-laber {
-    font-size: 18px;
-    font-weight: bold;
-    margin-right: 10px;
-  }
-  
-  .register-form .register-input {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    display: flex;
-    padding-left: 5px;
-    padding-right: 10px;
-    padding-top: 13px;
-    padding-bottom: 13px;
-    gap: 10px;
-  }
-  
-  .register-form .register-button {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: none;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-    margin-bottom: 20px;
-  }
-  
-  .register-form .register-button:hover {
-    background-color: #0069d9;
-  }
+}
+
+.register-form .register-div {
+  margin-bottom: 10px;
+}
+
+.register-form .register-laber {
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.register-form .register-input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  display: flex;
+  padding-left: 5px;
+  padding-right: 10px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  gap: 10px;
+}
+
+.register-form .register-button {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.register-form .register-button:hover {
+  background-color: #0069d9;
+}
+
+.google-btn {
+  width: 184px;
+  height: 42px;
+  background-color: #4285f4;
+  border-radius: 2px;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .25);
+}
+
+.google-icon-wrapper {
+  position: absolute;
+  margin-top: 1px;
+  margin-left: 1px;
+  width: 40px;
+  height: 40px;
+  border-radius: 2px;
+  background-color: #fff;
+}
+
+.google-icon {
+  margin-top: 11px;
+  width: 18px;
+  height: 18px;
+}
+
+.btn-text {
+  float: right;
+  margin: 11px 11px 0 0;
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  font-family: "Roboto";
+}
+
+.btn-text:hover {
+  box-shadow: 0 0 6px #4285f4;
+}
+
+.btn-text:active {
+  background: #1669F2;
+}

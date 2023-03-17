@@ -10,13 +10,32 @@ import {
    signInWithPopup,
    sendPasswordResetEmail,
 } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth } from "./firebase";
 
 /*
 ##########################################################
 Este archivo es para almacener el estado de la autenticacion y funciones 
 Relacionadas.
 Retorna un elemento global que permite tener presente el estado del usuario.
+
+Para utilizarlo ya esta el hook seteado solo se tiene que llamar en el elmento 
+que se quiera implementar es decir
+
+se importa la funcion auth
+import { useAuth } from '.client\src\context\AuthContext.js';                   // depende donde estes parado
+
+se desctructura segun lo que se ocupe:
+
+const {
+   signup,           // Funcion para crear  usuario requiere email y password, al menos
+   login,            // Funcion para logear usuario requiere email y password, al menos
+   user,             // Objeto que retorna firebase || si no esta logeado es null
+   usersimple,
+   logout,           // self explanatory
+   loading,          // limbo entre logear y no loeago y logeado
+   loginWithGoogle,  // self explanatory
+   resetPassword,    // self explanatory
+} = useAuth()
 
 ##########################################################
 */
@@ -54,6 +73,7 @@ export function AuthProvider({ children }) {
 
    useEffect(() => {
       const unsubuscribe = onAuthStateChanged(auth, async (currentUser) => {
+         console.log('herrmienta de debug')
          setUser(currentUser);
          setLoading(false);
       });
