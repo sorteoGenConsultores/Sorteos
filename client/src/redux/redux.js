@@ -1,15 +1,17 @@
-
 const initialSate = {
-    
-}
-
-
-function rootReducer(state = initialSate, action) {
+    participant: [],
+  };
+  
+  function rootReducer(state = initialSate, action) {
     switch (action.type) {
-    
-        default:
-            return state;
-        }
-}
-
-export default rootReducer;
+      case "CREATE_PARTICIPANT":
+        return {
+          ...state,
+        };
+  
+      default:
+        return state;
+    }
+  }
+  
+  export default rootReducer;
