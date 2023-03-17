@@ -1,51 +1,55 @@
-import logo from './logo.svg';
+import logo from "./logo.svg";
 
-import './App.css';
+import "./App.css";
 // import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Login from './components/login/Login';
-import Register from './components/register/Register';
+import Login from "./components/login/Login";
+import Register from "./components/register/Register";
+import Lottery from "./components/lottery/Lottery";
 
 import {
   Routes,
-  Route
+  Route,
   // Link,
   // useNavigate,
   // useLocation,
   // Navigate,
   // Outlet,
 } from "react-router-dom";
-import TestComponent from './components/TestComponent';
+import TestComponent from "./components/TestComponent";
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route exact path='/' element={
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-              Edit <code>src/App.js</code> and save to reload.
-            </p>
-            <a
-              className="App-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
-          </header>} />
+        <Route
+          exact
+          path="/"
+          element={
+            <header className="App-header">
+              <img src={logo} className="App-logo" alt="logo" />
+              <p>
+                Edit <code>src/App.js</code> and save to reload.
+              </p>
+              <a
+                className="App-link"
+                href="https://reactjs.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Learn React
+              </a>
+            </header>
+          }
+        />
         <Route exact path="/Login" element={<Login />} />
         <Route exact path="/register" element={<Register />} />
-        <Route exact path='/testing' element={<TestComponent />} />
+        <Route exact path="/lottery" element={<Lottery />} />
+        <Route exact path="/testing" element={<TestComponent />} />
 
-        <Route exact path='*' element={<>
-          Soy un error por desarrollar 🔧🛠
-        </>} />
+        <Route exact path="*" element={<>Soy un error por desarrollar 🔧🛠</>} />
       </Routes>
-    </div >
+    </div>
   );
 }
-
 
 export default App;
