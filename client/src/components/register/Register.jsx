@@ -1,11 +1,22 @@
 import React, { useState } from "react";
 import "./register.css";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+import { createParticipant } from "../../redux/action";
+import { useDispatch } from 'react-redux'
 
 function Register() {
+  const dispatch = useDispatch()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [input, setInput] = useState({
+    email,
+    password,
+    confirmPassword,
+  })
+
+  console.log(input)
+  
 
   const togglePassword = () => {
     setPassword(!password);
@@ -25,6 +36,12 @@ function Register() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+   dispatch(createParticipant())
+   setInput({
+    email:'',
+    password: '',
+    confirmPassword:'',
+   })
   };
 
   return (
@@ -55,6 +72,7 @@ function Register() {
           <input
             className="register-input"
             type={password ? "password" : "text"}
+            // value={password}
             onChange={handlePasswordChange}
             placeholder="••••••••"
             required
@@ -85,6 +103,7 @@ function Register() {
           <input
             className="register-input"
             type="password"
+            value={confirmPassword}
             onChange={handleConfirmPasswordChange}
             placeholder="••••••••"
             required
