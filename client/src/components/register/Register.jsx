@@ -1,11 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./register.css";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+import { createParticipant } from "../../redux/action";
+import { useDispatch, useSelector } from "react-redux";
 
 function Register() {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
+  const participant = useSelector((state) => state.participant);
+  const [inputs, setInputs] = useState({
+    email: "",
+    password: "",
+  });
+
+  useEffect(() => {
+    dispatch(createParticipant());
+  }, []);
 
   const togglePassword = () => {
     setPassword(!password);
@@ -25,6 +37,13 @@ function Register() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    dispatch(createParticipant(inputs));
+    console.log(inputs);
+    // alert(`${inputs.email.toUpperCase()} fue creado con exito`);
+    setInputs({
+      email: "",
+      password: "",
+    });
   };
 
   return (
@@ -41,7 +60,7 @@ function Register() {
             className="register-input"
             type="email"
             id="email"
-            value={email}
+            value={inputs.email}
             onChange={handleEmailChange}
             placeholder="ejemplo@gmail.com"
             required
