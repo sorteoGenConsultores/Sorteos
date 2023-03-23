@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReactCardFlip from 'react-card-flip';
-// import QuestionCards from "./QuestionCards.css"
+import './QuestionCards.css';
 
 function QuestionCards() {
   const [isFlipped1, setIsFlipped1] = useState(false);
@@ -20,34 +20,34 @@ function QuestionCards() {
   };
 
   return (
-    <div>
-      <button onClick={handleClick1}>Flip Card 1</button>
-      <ReactCardFlip isFlipped={isFlipped1}>
-        <div className="card-front" key="front1">Front of Card 1</div>
-        <div className="card-back" key="back1">Back of Card 1</div>
+    <div className="card-container">
+      <ReactCardFlip isFlipped={isFlipped1} className="card" onClick={handleClick1}>
+        <div className="card-front" key="front1">
+          <img src="https://via.placeholder.com/150x150" alt="front card 1" onClick={handleClick1}/>
+          <p>Front of Card 1</p>
+        </div>
+        <div className="card-back" key="back1">
+          <img src="https://via.placeholder.com/150x150" alt="back card 1" onClick={handleClick1}/>
+        </div>
       </ReactCardFlip>
 
-      <button onClick={handleClick2}>Flip Card 2</button>
-      <ReactCardFlip isFlipped={isFlipped2}>
-        <div className="card-front" key="front2">Front of Card 2</div>
-        <div className="card-back" key="back2">Back of Card 2</div>
+      <ReactCardFlip isFlipped={isFlipped2} className="card" onClick={handleClick2}>
+        <div className="card-front" key="front2">
+          <img src="https://via.placeholder.com/150x150" alt="front card 2" onClick={handleClick2}/>
+          <p>Front of Card 2</p>
+        </div>
+        <div className="card-back" key="back2">
+          <img src="https://via.placeholder.com/150x150" alt="back card 2" onClick={handleClick2}/>
+        </div>
       </ReactCardFlip>
 
-      <button onClick={handleClick3}>Flip Card 3</button>
-      <ReactCardFlip isFlipped={isFlipped3}>
+      <ReactCardFlip isFlipped={isFlipped3} className="card" onClick={handleClick3}>
         <div className="card-front" key="front3">
-          <div className="card-header">
-            <h2>Card Title</h2>
-            <div className="card-icon">Icon</div>
-          </div>
-          <div className="card-content">Front of Card 3</div>
+          <img src="https://via.placeholder.com/150x150" alt="front card 3" onClick={handleClick3}/>
+          <p>Front of Card 3</p>
         </div>
         <div className="card-back" key="back3">
-          <div className="card-header">
-            <h2>Card Title</h2>
-            <div className="card-icon">Icon</div>
-          </div>
-          <div className="card-content">Back of Card 3</div>
+          <img src="https://via.placeholder.com/150x150" alt="back card 3" onClick={handleClick3}/>
         </div>
       </ReactCardFlip>
     </div>
