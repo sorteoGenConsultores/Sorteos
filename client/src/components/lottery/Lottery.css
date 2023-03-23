@@ -1,0 +1,43 @@
+/* .rw-widget {
+  background-color: #000;
+  border-radius: 50%;
+  position: relative;
+}
+
+.rw-slice {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  transform-origin: 0 0;
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.rw-slice:nth-child(odd) {
+  border-color: #000 transparent #000 #000;
+  background-color: #f00;
+}
+
+.rw-slice:nth-child(even) {
+  border-color: #f00 transparent #f00 #f00;
+  background-color: #000;
+}
+
+.rw-slice-text {
+  font-size: 16px;
+  font-weight: 600;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  background-color: transparent;
+} */
